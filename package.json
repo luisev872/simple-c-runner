@@ -3,7 +3,11 @@
   "displayName": "Simple C runner",
   "description": "Simple extension for students to run C console apps easily",
   "publisher": "luiesteb",
-  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luisev872/simple-c-runner"
+  },
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.90.0"
   },
