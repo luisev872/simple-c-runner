@@ -12,11 +12,9 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.executeCommand('workbench.action.files.save');
 		
 		if (editor?.document.fileName) {
-			const path = editor.document.fileName;
-			const list = path.split('\\')
+			const list = editor.document.fileName.split('\\')
 			const dir = list.slice(0, -1).join('\\');
 			const name = list.pop();
-			console.log(dir, name);
 			const childProcess = require('child_process');
 			childProcess.exec(`start cmd.exe /k "cd ${dir} && gcc ${name} -Wall && a.exe && echo. & echo Press any key to close && pause>nul && exit"`, (error: any, stdout: any, stderr: any) => {});
 		}
