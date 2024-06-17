@@ -17,7 +17,7 @@
       {
         "command": "simple-c-runner.compileandrun",
         "title": "Compile and run C program",
-        "key": "f5",
+        "key": "ctrl+f6",
         "when": "editorLangId == c"
       }
     ]

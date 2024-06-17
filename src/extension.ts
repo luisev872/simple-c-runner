@@ -9,9 +9,16 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const newcommand = vscode.commands.registerCommand('simple-c-runner.compileandrun', (uri:vscode.Uri) => {
 		const editor = vscode.window.activeTextEditor;
-		if (editor) {
+		vscode.commands.executeCommand('workbench.action.files.save');
+		
+		if (editor?.document.fileName) {
+			const path = editor.document.fileName;
+			const list = path.split('\\')
+			const dir = list.slice(0, -1).join('\\');
+			const name = list.pop();
+			console.log(dir, name);
 			const childProcess = require('child_process');
-			childProcess.exec(`start cmd.exe /k "gcc ${editor.document.fileName} -Wall && a.exe && echo. & echo Press any key to close && pause>nul && exit"`, (error: any, stdout: any, stderr: any) => {});
+			childProcess.exec(`start cmd.exe /k "cd ${dir} && gcc ${name} -Wall && a.exe && echo. & echo Press any key to close && pause>nul && exit"`, (error: any, stdout: any, stderr: any) => {});
 		}
 	});
 
